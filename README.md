@@ -1,6 +1,6 @@
-Adds Plex-friendly names to search results on IMDB and TVDB.
+This is an extension for Chrome or Brave browsers that adds Plex-friendly names to search results on IMDB and TVDB.
 
-Available at the Chrome web store here: [Plex name formatter exension](https://chromewebstore.google.com/detail/plex-name-formatter/lommookhlmmagmicoccpkhiikhgiaaao).
+It is available at the Chrome web store here: [Plex name formatter exension](https://chromewebstore.google.com/detail/plex-name-formatter/lommookhlmmagmicoccpkhiikhgiaaao).
 
 This extension is handy if you use Plex media server and organise your files.
 
