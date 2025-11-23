@@ -49,20 +49,28 @@ function makePlexNameBox(title, year, source, code) {
 }
 
 function modifyIMDBSearchResults() {
-  const results = document.querySelectorAll('.find-result-item');
+  const results = document.querySelectorAll('.ipc-metadata-list-summary-item');
 
   results.forEach(result => {
     // Check if the formatted box already exists to avoid duplicates
     if (hasPlexNameBox(result))
       return;
-    const titleElement = result.querySelector('.ipc-metadata-list-summary-item__t');
-    const yearElement = result.querySelector('.ipc-metadata-list-summary-item__li');
+    const linkElement = result.querySelector('.ipc-title-link-wrapper');
+    if (linkElement === null)
+      return;
+    const titleElement = linkElement.querySelector('.ipc-title__text');
+    if (titleElement === null)
+      return;
+    const metadataContainer = result.querySelector('.cli-title-metadata');
+    if (metadataContainer === null)
+      return;
+    const yearElement = result.querySelector('.cli-title-metadata-item');
     var year;
     if (yearElement === null)
       year = null;
     else
-      year = yearElement.textContent;
-    const href = titleElement.getAttribute('href');
+      year = yearElement.textContent.trim();
+    const href = linkElement.getAttribute('href');
     var imdbCode;
     const imdbCodematch = href.match(/title\/(tt\d+)/);
     if (imdbCodematch === null)
@@ -70,7 +78,9 @@ function modifyIMDBSearchResults() {
     else
       imdbCode = imdbCodematch[1];
     const plexNameBox = makePlexNameBox(titleElement.textContent, year, 'imdb', imdbCode);
-    titleElement.parentNode.insertBefore(plexNameBox, titleElement.nextSibling);
+    plexNameBox.style.display = 'block';
+    plexNameBox.style.marginTop = '0.25rem';
+    metadataContainer.parentNode.insertBefore(plexNameBox, metadataContainer.nextSibling);
   });
 }
 
@@ -103,7 +113,7 @@ function modifyTVDBSearchResults() {
 }
 
 const observer = new MutationObserver((mutations, obs) => {
-  if (document.querySelector('.find-result-item'))
+  if (document.querySelector('.ipc-metadata-list-summary-item'))
     modifyIMDBSearchResults();
   if (document.querySelector('.media-body'))
     modifyTVDBSearchResults();
