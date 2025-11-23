@@ -19,3 +19,7 @@ on TVDB, it adds:
 You can copy the Plex-friendly name to the clipboard simply by clicking on it. When you move mouse over the name, you will see the “copy” cursor. When you have clicked, the text `✓ Copied` appears briefly after the name.
 
 If you find it useful, please buy me a coffee https://www.buymeacoffee.com/lorenzowood.
+
+### Revisions
+
+v1.1 on 23 Nov 2025 — Handles IMDB’s revised results page formatting
